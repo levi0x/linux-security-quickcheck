@@ -18,7 +18,10 @@ from datetime import datetime
 from typing import List
 
 
-def run(cmd: List[str]) -> str:
+from typing import Sequence
+
+def run(cmd: Sequence[str]) -> str:
+
     """Run a command safely (no shell). Returns output or 'Unavailable'."""
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -78,13 +81,16 @@ def main() -> None:
     header("Logged-in Users")
     print(run(["who"]))
 
-    header("Listening Network Ports (top 20)")
+       header("Listening Network Ports (top 20)")
     if shutil.which("ss"):
-        print(run(["bash", "-lc", "ss -tuln | head -n 20"]))
+        out = run(["ss", "-tuln"])
+        print("\n".join(out.splitlines()[:20]) or "Unavailable")
     elif shutil.which("netstat"):
-        print(run(["bash", "-lc", "netstat -tuln | head -n 20"]))
+        out = run(["netstat", "-tuln"])
+        print("\n".join(out.splitlines()[:20]) or "Unavailable")
     else:
         print("ss/netstat not available on this system.")
+
 
     header("SSH Configuration (Key Settings)")
     print(read_sshd_settings())
