@@ -26,3 +26,11 @@ python3 quickcheck.py
 
 ⚠️ Note: Output shown below was captured on macOS (Darwin).
 On Linux systems, firewall (UFW) and SSH config results may differ.
+
+## Example Output
+
+Below is a sample run of the script on a local system:
+
+![Linux Security QuickCheck Output](output-example.png)
+
+⚠️ This tool is read-only and intended for educational and defensive security use only.
