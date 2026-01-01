@@ -15,13 +15,10 @@ import os
 import shutil
 import subprocess
 from datetime import datetime
-from typing import List
-
-
 from typing import Sequence
 
-def run(cmd: Sequence[str]) -> str:
 
+def run(cmd: Sequence[str]) -> str:
     """Run a command safely (no shell). Returns output or 'Unavailable'."""
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -42,7 +39,7 @@ def read_sshd_settings(path: str = "/etc/ssh/sshd_config") -> str:
         return "SSH config not found."
 
     keys = {"port", "permitrootlogin", "passwordauthentication"}
-    found = {}
+    found: dict[str, str] = {}
 
     try:
         with open(path, "r", encoding="utf-8", errors="ignore") as f:
@@ -62,7 +59,6 @@ def read_sshd_settings(path: str = "/etc/ssh/sshd_config") -> str:
     if not found:
         return "No key SSH settings found (or file is non-standard)."
 
-    # Pretty output
     order = ["port", "permitrootlogin", "passwordauthentication"]
     lines = []
     for k in order:
@@ -81,7 +77,7 @@ def main() -> None:
     header("Logged-in Users")
     print(run(["who"]))
 
-       header("Listening Network Ports (top 20)")
+    header("Listening Network Ports (top 20)")
     if shutil.which("ss"):
         out = run(["ss", "-tuln"])
         print("\n".join(out.splitlines()[:20]) or "Unavailable")
@@ -90,7 +86,6 @@ def main() -> None:
         print("\n".join(out.splitlines()[:20]) or "Unavailable")
     else:
         print("ss/netstat not available on this system.")
-
 
     header("SSH Configuration (Key Settings)")
     print(read_sshd_settings())
