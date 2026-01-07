@@ -1,5 +1,6 @@
 # Linux Security QuickCheck
 
+
 A quick, **read-only** Linux security visibility script that prints a small report:
 
 - System info (user / host / kernel)
@@ -24,6 +25,7 @@ python3 quickcheck.py
 
 ⚠️ This tool is read-only and intended for educational and defensive security use only.
 
+Updated upstream
 ⚠️ Note: Output shown below was captured on macOS (Darwin).
 On Linux systems, firewall (UFW) and SSH config results may differ.
 
@@ -34,3 +36,22 @@ Below is a sample run of the script on a local system:
 ![Linux Security QuickCheck Output](output_screenshot.png)
 
 ⚠️ This tool is read-only and intended for educational and defensive security use only.
+
+
+
+## Java Version
+
+```bash
+cd java/src
+javac QuickCheck.java
+java QuickCheck
+
+---
+
+## 6) Commit + push
+```bash
+git add java README.md .gitignore
+git commit -m "Add Java version of Security QuickCheck"
+git push
+
+ Stashed changes
