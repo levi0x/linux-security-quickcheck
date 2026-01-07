@@ -1,6 +1,5 @@
 # Linux Security QuickCheck
 
-
 A quick, **read-only** Linux security visibility script that prints a small report:
 
 - System info (user / host / kernel)
@@ -20,8 +19,18 @@ I built this as a simple portfolio project to demonstrate:
 - Python 3.9+ (works on most Python 3 versions)
 
 ## Run
+
 ```bash
 python3 quickcheck.py
+
+## Java Version
+
+```bash
+cd java/src
+javac QuickCheck.java
+java QuickCheck
+
+```
 
 ⚠️ This tool is read-only and intended for educational and defensive security use only.
 
@@ -38,20 +47,3 @@ Below is a sample run of the script on a local system:
 ⚠️ This tool is read-only and intended for educational and defensive security use only.
 
 
-
-## Java Version
-
-```bash
-cd java/src
-javac QuickCheck.java
-java QuickCheck
-
----
-
-## 6) Commit + push
-```bash
-git add java README.md .gitignore
-git commit -m "Add Java version of Security QuickCheck"
-git push
-
- Stashed changes
